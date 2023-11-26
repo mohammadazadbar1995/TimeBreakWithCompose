@@ -15,4 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "TimeBreakWithCompose"
 include(":app",
-    ":library:designsystem")
+    ":library:designsystem",
+    ":feature:countdown",
+)
