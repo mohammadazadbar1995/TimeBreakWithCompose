@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "TimeBreakWithCompose"
-include(":app")
- 
+include(":app",
+    ":library:designsystem")
