@@ -1,4 +1,4 @@
-package com.timebreakwithcompose.ui.theme
+package com.jetpack.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
