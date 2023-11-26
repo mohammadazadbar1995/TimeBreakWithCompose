@@ -10,36 +10,44 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.jetpack.countdown.component.Counter
 import com.jetpack.designsystem.ThemePreviews
+import com.jetpack.designsystem.theme.TimeBreakWithComposeTheme
 
 @Composable
 fun CountdownRoute(
     viewModel: CountdownViewModel,
 
     ) {
-    CountdownScreen()
+    CountdownScreen("", "")
 }
 
 
 @Composable
 fun CountdownScreen(
+    minutes: String,
+    seconds: String,
 ) {
-
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        //TODO:
+        Counter(minutes = minutes, seconds = seconds)
     }
 }
 
 @ThemePreviews
 @Composable
 private fun CountdownScreenPreview() {
-    Surface {
-        CountdownScreen(
-
-        )
+    TimeBreakWithComposeTheme {
+        Surface {
+            CountdownScreen(
+                minutes = "19",
+                seconds = "59"
+            )
+        }
     }
+
 }
