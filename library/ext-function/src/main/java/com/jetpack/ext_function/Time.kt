@@ -1,9 +1,9 @@
 package com.jetpack.ext_function
 
-val Int.minutes: Int
+val Long.minutes: Long
     get() = this / 60
 
-val Int.seconds: Int
+val Long.seconds: Long
     get() = this % 60
 
 fun String.toTwoDigitFormat():String =

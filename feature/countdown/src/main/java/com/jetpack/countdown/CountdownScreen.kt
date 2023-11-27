@@ -22,13 +22,16 @@ fun CountdownRoute(
     viewModel: CountdownViewModel,
 
     ) {
-//    CountdownScreen("", "")
+    CountdownScreen(
+        countdownState = viewModel.countdownState.value,
+        onRestClicked = { viewModel.resetCountdown() },
+        onStartClicked = { viewModel.startCountdown() },
+    )
 }
 
 
 @Composable
 fun CountdownScreen(
-    counterState: CounterState,
     countdownState: CountdownState,
     onRestClicked: () -> Unit,
     onStartClicked: () -> Unit,
@@ -43,7 +46,7 @@ fun CountdownScreen(
         Counter(countdownState = countdownState)
         Spacer(modifier = Modifier.height(16.dp))
         CounterController(
-            countState = counterState,
+            countState = countdownState.counterState,
             onRestClicked = { onRestClicked() },
             onStartClicked = { onStartClicked() }
         )
@@ -56,7 +59,6 @@ private fun CountdownScreenPreview() {
     TimeBreakWithComposeTheme {
         Surface {
             CountdownScreen(
-                counterState = CounterState.INITIAL,
                 countdownState = CountdownState(),
                 onRestClicked = { },
                 onStartClicked = { })
