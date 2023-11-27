@@ -3,6 +3,9 @@ package com.jetpack.countdown
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.jetpack.countdown.model.CountdownState
+import com.jetpack.countdown.model.CounterState
+import com.jetpack.countdown.model.WorkingState
 
 class CountdownViewModel : ViewModel() {
 
@@ -11,20 +14,3 @@ class CountdownViewModel : ViewModel() {
 
 
 }
-
-data class CountdownState(
-    val counterState: CounterState = CounterState.INITIAL,
-    val workingState: WorkingState = WorkingState.WORk,
-    val remainTime: Int = REST_DURATION,
-)
-
-enum class CounterState {
-    INITIAL, PLAY, PAUSE
-}
-
-enum class WorkingState {
-    REST, WORk
-}
-
-const val REST_DURATION = 20
-const val WORKING_DURATION = 20 * 60
