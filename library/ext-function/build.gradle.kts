@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    namespace = "com.jetpack.countdown"
-    compileSdk = 33
+    namespace = "com.jetpack.ext_function"
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
@@ -30,19 +30,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
-    }
 }
 
 dependencies {
 
-    implementation(project(":library:designsystem"))
-    implementation(project(":library:ext-function"))
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    testImplementation("junit:junit:4.13.2")
 
 }

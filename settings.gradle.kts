@@ -17,4 +17,5 @@ rootProject.name = "TimeBreakWithCompose"
 include(":app",
     ":library:designsystem",
     ":feature:countdown",
+    ":library:ext-function",
 )
