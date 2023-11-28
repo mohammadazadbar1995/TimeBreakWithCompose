@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.jetpack.countdown.component.Counter
 import com.jetpack.countdown.component.CounterController
 import com.jetpack.countdown.model.CountdownState
@@ -18,8 +19,7 @@ import com.jetpack.designsystem.theme.TimeBreakWithComposeTheme
 
 @Composable
 fun CountdownRoute(
-    viewModel: CountdownViewModel,
-
+    viewModel: CountdownViewModel = hiltViewModel(),
     ) {
 
     val state = viewModel.countdownState.value
