@@ -1,5 +1,7 @@
 package com.jetpack.countdown
 
+import android.content.Context
+import android.media.MediaPlayer
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -9,12 +11,18 @@ import com.jetpack.countdown.model.CounterState
 import com.jetpack.countdown.model.SECOND
 import com.jetpack.countdown.model.WORKING_DURATION
 import com.jetpack.countdown.model.WorkingState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CountdownViewModel : ViewModel() {
+@HiltViewModel
+class CountdownViewModel @Inject constructor(
+    @ApplicationContext val context: Context
+) : ViewModel() {
 
     private val _countdownState = mutableStateOf(CountdownState())
     val countdownState: State<CountdownState> = _countdownState
@@ -49,10 +57,18 @@ class CountdownViewModel : ViewModel() {
                             this.cancel()
                         }
                     }
+
+                    PlayAlarmSound()
                 }
 
             }
         }
+    }
+
+    private fun PlayAlarmSound() {
+        val mediaPlayer =
+            MediaPlayer.create(context, com.jetpack.designsystem.R.raw.alarm)
+        mediaPlayer.start()
     }
 
     fun resetCountdown() {
@@ -63,7 +79,7 @@ class CountdownViewModel : ViewModel() {
 
     }
 
-    private fun resetCountdownState(){
+    private fun resetCountdownState() {
         _countdownState.value = CountdownState()
     }
 
