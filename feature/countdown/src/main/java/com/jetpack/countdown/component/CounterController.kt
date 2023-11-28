@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -37,7 +38,7 @@ fun CounterController(
             Icon(
                 imageVector = when (countState) {
                     CounterState.INITIAL -> Icons.Rounded.PlayArrow
-                    CounterState.PLAY -> Icons.Rounded.PlayArrow
+                    CounterState.PLAY -> Icons.Rounded.Close
                     CounterState.PAUSE -> Icons.Rounded.PlayArrow
                 },
                 contentDescription = null
