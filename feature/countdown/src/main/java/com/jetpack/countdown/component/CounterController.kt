@@ -1,11 +1,13 @@
 package com.jetpack.countdown.component
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material.icons.rounded.Stop
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -38,7 +40,7 @@ fun CounterController(
             Icon(
                 imageVector = when (countState) {
                     CounterState.INITIAL -> Icons.Rounded.PlayArrow
-                    CounterState.PLAY -> Icons.Rounded.Close
+                    CounterState.PLAY -> Icons.Rounded.Stop
                     CounterState.PAUSE -> Icons.Rounded.PlayArrow
                 },
                 contentDescription = null
@@ -53,11 +55,20 @@ fun CounterController(
 fun CounterControllerPreview() {
     TimeBreakWithComposeTheme {
         Surface {
-            CounterController(
-                countState = CounterState.INITIAL,
-                onRestClicked = {},
-                onStartClicked = {},
-            )
+            Column {
+                CounterController(
+                    countState = CounterState.INITIAL,
+                    onRestClicked = {},
+                    onStartClicked = {},
+                )
+
+                CounterController(
+                    countState = CounterState.PLAY,
+                    onRestClicked = {},
+                    onStartClicked = {},
+                )
+            }
+
         }
     }
 }
