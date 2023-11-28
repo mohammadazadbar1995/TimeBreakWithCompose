@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import com.jetpack.countdown.component.Counter
 import com.jetpack.countdown.component.CounterController
 import com.jetpack.countdown.model.CountdownState
-import com.jetpack.countdown.model.CounterState
 import com.jetpack.designsystem.ThemePreviews
 import com.jetpack.designsystem.theme.TimeBreakWithComposeTheme
 
@@ -22,8 +21,10 @@ fun CountdownRoute(
     viewModel: CountdownViewModel,
 
     ) {
+
+    val state = viewModel.countdownState.value
     CountdownScreen(
-        countdownState = viewModel.countdownState.value,
+        countdownState = state,
         onRestClicked = { viewModel.resetCountdown() },
         onStartClicked = { viewModel.startCountdown() },
     )

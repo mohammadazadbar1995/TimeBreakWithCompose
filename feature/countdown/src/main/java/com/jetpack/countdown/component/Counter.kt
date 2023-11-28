@@ -22,13 +22,9 @@ import com.jetpack.ext_function.toTwoDigitFormat
 fun Counter(
     countdownState: CountdownState,
 ) {
-    val minutes by remember {
-        mutableStateOf(countdownState.remainTime.minutes.toString().toTwoDigitFormat())
-    }
+    val minutes = countdownState.remainTime.minutes.toString().toTwoDigitFormat()
 
-    val seconds by remember {
-        mutableStateOf(countdownState.remainTime.seconds.toString().toTwoDigitFormat())
-    }
+    val seconds = countdownState.remainTime.seconds.toString().toTwoDigitFormat()
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
