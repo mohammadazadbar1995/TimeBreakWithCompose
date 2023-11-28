@@ -11,10 +11,12 @@ import androidx.compose.ui.Modifier
 import com.jetpack.countdown.CountdownRoute
 import com.jetpack.countdown.CountdownViewModel
 import com.jetpack.designsystem.theme.TimeBreakWithComposeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val countdownViewModel: CountdownViewModel by viewModels()
+//    val countdownViewModel: CountdownViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -24,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CountdownRoute(countdownViewModel)
+                    CountdownRoute()
                 }
             }
         }
