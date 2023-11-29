@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jetpack.countdown.model.CountdownState
 import com.jetpack.countdown.model.CounterState
+import com.jetpack.countdown.model.REST_DURATION
 import com.jetpack.countdown.model.SECOND
 import com.jetpack.countdown.model.WORKING_DURATION
 import com.jetpack.countdown.model.WorkingState
@@ -45,14 +46,14 @@ class CountdownViewModel @Inject constructor(
                     )
                 } else {
                     when (_countdownState.value.workingState) {
-                        WorkingState.REST -> {
+                        WorkingState.WORK -> {
                             _countdownState.value = _countdownState.value.copy(
-                                workingState = WorkingState.WORK,
-                                remainTime = WORKING_DURATION
+                                workingState = WorkingState.REST,
+                                remainTime = REST_DURATION
                             )
                         }
 
-                        WorkingState.WORK -> {
+                        WorkingState.REST -> {
                             resetCountdownState()
                             this.cancel()
                         }
