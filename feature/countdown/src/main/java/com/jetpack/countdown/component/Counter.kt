@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import com.jetpack.countdown.model.CountdownState
 import com.jetpack.designsystem.ThemePreviews
 import com.jetpack.designsystem.theme.TimeBreakWithComposeTheme
+import com.jetpack.designsystem.widget.AnimatedCounter
 import com.jetpack.ext_function.minutes
 import com.jetpack.ext_function.seconds
 import com.jetpack.ext_function.toTwoDigitFormat
@@ -29,9 +30,9 @@ fun Counter(
     Row(
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        CounterText(text = minutes)
+        AnimatedCounter(count = minutes)
         Text(text = " : ")
-        CounterText(text = seconds)
+        AnimatedCounter(count = seconds)
     }
 }
 
