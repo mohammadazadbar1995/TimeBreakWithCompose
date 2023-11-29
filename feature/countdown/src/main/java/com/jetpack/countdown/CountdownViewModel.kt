@@ -22,13 +22,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CountdownViewModel @Inject constructor(
-    @ApplicationContext val context: Context
+    @ApplicationContext context: Context
 ) : ViewModel() {
 
     private val _countdownState = mutableStateOf(CountdownState())
     val countdownState: State<CountdownState> = _countdownState
 
-    var timerJob: Job = Job()
+    private var timerJob: Job = Job()
+
+    private var mediaPlayer: MediaPlayer = MediaPlayer.create(context, com.jetpack.designsystem.R.raw.alarm)
 
 
     fun startCountdown() {
@@ -67,8 +69,6 @@ class CountdownViewModel @Inject constructor(
     }
 
     private fun PlayAlarmSound() {
-        val mediaPlayer =
-            MediaPlayer.create(context, com.jetpack.designsystem.R.raw.alarm)
         mediaPlayer.start()
     }
 
@@ -84,4 +84,8 @@ class CountdownViewModel @Inject constructor(
         _countdownState.value = CountdownState()
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        mediaPlayer.release()
+    }
 }
