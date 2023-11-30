@@ -16,13 +16,26 @@ import com.jetpack.countdown.component.CounterController
 import com.jetpack.countdown.model.CountdownState
 import com.jetpack.designsystem.ThemePreviews
 import com.jetpack.designsystem.theme.TimeBreakWithComposeTheme
+import com.jetpack.ext_function.minutes
+import com.jetpack.ext_function.seconds
+import com.jetpack.ext_function.toTwoDigitFormat
 
 @Composable
 fun CountdownRoute(
     viewModel: CountdownViewModel = hiltViewModel(),
-    ) {
+    onCounterUpdate: (String) -> Unit,
+) {
 
     val state = viewModel.countdownState.value
+    state.remainTime.apply {
+        val minutes = minutes.toString().toTwoDigitFormat()
+        val seconds = seconds.toString().toTwoDigitFormat()
+
+        onCounterUpdate("$minutes : $seconds")
+    }
+
+
+
     CountdownScreen(
         countdownState = state,
         onRestClicked = { viewModel.resetCountdown() },
