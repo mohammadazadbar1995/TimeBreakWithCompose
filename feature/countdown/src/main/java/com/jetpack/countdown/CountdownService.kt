@@ -31,7 +31,7 @@ class CountdownService : Service() {
             .setContentTitle(NOTIFICATION_CONTENT_TITLE)
             .setContentText(message)
             .build()
-        startForeground(1, notification)
+        startForeground(NOTIFICATION_ID, notification)
     }
 
 }
