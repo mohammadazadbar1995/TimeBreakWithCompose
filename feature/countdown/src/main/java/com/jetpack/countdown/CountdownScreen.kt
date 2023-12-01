@@ -1,5 +1,6 @@
 package com.jetpack.countdown
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,10 +10,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jetpack.countdown.component.Counter
 import com.jetpack.countdown.component.CounterController
+import com.jetpack.countdown.model.Action
 import com.jetpack.countdown.model.CountdownState
 import com.jetpack.designsystem.ThemePreviews
 import com.jetpack.designsystem.theme.TimeBreakWithComposeTheme
@@ -26,12 +29,15 @@ fun CountdownRoute(
     onCounterUpdate: (String) -> Unit,
 ) {
 
+    val context = LocalContext.current
     val state = viewModel.countdownState.value
     state.remainTime.apply {
         val minutes = minutes.toString().toTwoDigitFormat()
         val seconds = seconds.toString().toTwoDigitFormat()
+        val notificationContent = "$minutes : $seconds"
 
-        onCounterUpdate("$minutes : $seconds")
+        onCounterUpdate(notificationContent)
+
     }
 
 
