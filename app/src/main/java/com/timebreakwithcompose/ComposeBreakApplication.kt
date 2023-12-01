@@ -5,6 +5,8 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import com.jetpack.countdown.CHANNEL_ID
+import com.jetpack.countdown.CHANNEL_NAME
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
